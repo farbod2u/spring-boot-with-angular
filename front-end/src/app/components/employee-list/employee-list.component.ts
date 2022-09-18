@@ -19,17 +19,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   private getAll() {
-    /*this.employees = [
-      {
-        id: 1,
-        firstName: "Saeed",
-        lastName: "Safaeian",
-        email: "ss@gmail"
-      }
-    ];*/
     this.employeeService.getAll().subscribe(value => {
-      //this.employees = value;
-      console.log(value);
+      this.employees = value
+    }, error => {
+      if (error.status === 302 && error.statusText === "OK")
+        this.employees = error.error;
     });
   }
 
