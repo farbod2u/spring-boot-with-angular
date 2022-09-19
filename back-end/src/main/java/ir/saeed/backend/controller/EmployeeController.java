@@ -24,17 +24,17 @@ public class EmployeeController {
 
     @PostMapping
     public ResponseEntity<Employee> create(@RequestBody Employee entity) {
-        return new ResponseEntity<>(employeeService.create(entity), HttpStatus.CREATED);
+        return new ResponseEntity<>(employeeService.create(entity), HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<List<Employee>> getAll() {
-        return new ResponseEntity<>(employeeService.getAll(), HttpStatus.FOUND);
+        return new ResponseEntity<>(employeeService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(employeeService.getById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(employeeService.getById(id), HttpStatus.OK);
     }
 
     @PutMapping

@@ -21,10 +21,10 @@ export class EmployeeListComponent implements OnInit {
   private getAll() {
     this.employeeService.getAll().subscribe(value => {
       this.employees = value;
-    }, error => {
+    }/*, error => {
       if (error.status === 302)
         this.employees = error.error;
-    });
+    }*/);
   }
 
 }
