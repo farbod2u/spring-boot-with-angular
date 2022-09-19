@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Employee} from "../models/employee";
 
@@ -13,10 +13,10 @@ export class EmployeeService {
   }
 
   getAll(): Observable<Employee[]> {
-   /* let headers = new HttpHeaders();
-    headers.set("Access-Control-Allow-Origin", "*");*/
-
-    // @ts-ignore
     return this.httpClient.get<Employee[]>(`${this.baseUrl}`/*, headers*/);
+  }
+
+  create(entity: Employee): Observable<object> {
+    return this.httpClient.post(this.baseUrl, entity);
   }
 }
