@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.parser.Entity;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /***
  * @author Saeed Safaeian
@@ -43,8 +45,10 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(employeeService.delete(id), HttpStatus.OK);
+    public ResponseEntity<Map<String, Boolean>> delete(@PathVariable("id") Long id) {
+        Map<String, Boolean> res = new HashMap<>();
+        res.put(employeeService.delete(id), Boolean.TRUE);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 }

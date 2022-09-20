@@ -23,13 +23,18 @@ export class EmployeeListComponent implements OnInit {
   private getAll() {
     this.employeeService.getAll().subscribe(value => {
       this.employees = value;
-    }/*, error => {
-      if (error.status === 302)
-        this.employees = error.error;
-    }*/);
+    }, error => console.log(error));
   }
 
   edit(id: number) {
     this.router.navigate(['/edit', id]);
+  }
+
+  delete(id: number) {
+    if (confirm("Are you sure about delete this record?"))
+      this.employeeService.delete(id).subscribe(data => {
+        console.log(data);
+        this.getAll();
+      }, error => console.log(error));
   }
 }
