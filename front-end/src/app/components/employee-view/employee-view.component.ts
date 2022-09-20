@@ -22,8 +22,10 @@ export class EmployeeViewComponent implements OnInit {
 
   getEmployee() {
     this.employeeService.getById(this.route.snapshot.params['id'])
-      .subscribe(data => this.employee = data,
-        error => console.log(error));
+      .subscribe({
+        next: v => this.employee = v,
+        error: e => console.log(e)
+      });
   }
 
 }

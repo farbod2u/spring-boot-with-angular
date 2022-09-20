@@ -21,9 +21,10 @@ export class EmployeeListComponent implements OnInit {
   }
 
   private getAll() {
-    this.employeeService.getAll().subscribe(value => {
-      this.employees = value;
-    }, error => console.log(error));
+    this.employeeService.getAll().subscribe({
+      next: v => this.employees = v,
+      error: e => console.log(e)
+    });
   }
 
   edit(id: number) {
@@ -32,10 +33,12 @@ export class EmployeeListComponent implements OnInit {
 
   delete(id: number) {
     if (confirm("Are you sure about delete this record?"))
-      this.employeeService.delete(id).subscribe(data => {
-        console.log(data);
-        this.getAll();
-      }, error => console.log(error));
+      this.employeeService.delete(id).subscribe({
+        next: v => {
+          console.log(v);
+          this.getAll();
+        }, error: e => console.log(e)
+      });
   }
 
   view(id: number) {
