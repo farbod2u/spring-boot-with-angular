@@ -5,6 +5,7 @@
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +13,9 @@
     <td>{{row.firstName}}</td>
     <td>{{row.lastName}}</td>
     <td>{{row.email}}</td>
+    <td>
+      <button class="btn btn-outline-info" (click)="edit(row.id)" >Edit</button>
+    </td>
   </tr>
   </tbody>
 </table>
