@@ -21,7 +21,7 @@ export class EmployeeCreateComponent implements OnInit {
   onSubmit(): void {
     this.employeeService.create(this.employee).subscribe(value => {
         console.log(value);
-        this.router.navigate(["/list"]);
+        this.router.navigate(["/employee-list"]);
       },
       error => {
         console.log("error on save employee ==>\n" + error);

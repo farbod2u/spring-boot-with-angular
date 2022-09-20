@@ -27,7 +27,7 @@ export class EmployeeEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.employeeService.update(this.employee).subscribe(data => this.router.navigate(['list']),
+    this.employeeService.update(this.employee).subscribe(data => this.router.navigate(['employee-list']),
       error => console.log(error));
   }
 }

@@ -27,7 +27,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigate(['/edit', id]);
+    this.router.navigate(['employee-edit', id]);
   }
 
   delete(id: number) {
